@@ -1,0 +1,6 @@
+Package: app
+Architecture: all
+Maintainer: YOURNAME
+Priority: optional
+Version: 0.1
+Description: some desc
