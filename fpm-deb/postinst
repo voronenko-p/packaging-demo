@@ -1,0 +1,2 @@
+#!/bin/bash
+touch /home/slavko/personal/packaging-demo/dummy-deb/OUT/app/opt/app/postinst

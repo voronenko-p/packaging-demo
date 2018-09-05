@@ -1,6 +1,6 @@
 #!/bin/sh
 
-WORKDIR=${PWD}/OUT/app
+WORKDIR=${PWD}/out/app
 mkdir -p $WORKDIR/DEBIAN
 
 cat <<EOF > $WORKDIR/DEBIAN/control
