@@ -93,3 +93,32 @@ fpm -s dir -t deb -v "$APP_VERSION" -n $APP_NAME --license="$APP_LICENSE" --main
 
 Note that here you might pass additional parameters, which tool has plenty of https://github.com/jordansissel/fpm/wiki , for example,
 `deb-init`, if saying you want to configure autostart
+
+
+## Building rpm with fpm
+
+Here you might start noticing benefits of the tool.  Building rpm uses almost the same script, perhaps only type is changed from deb to rpm `-t rpm`
+
+
+```sh
+#!/bin/sh
+
+APP_PACKAGE_DIR=$PWD/package
+
+APP_VERSION=0.0.0
+APP_NAME=app
+APP_LICENSE=MIT
+APP_MAINTAINER="Maintainer, inc"
+APP_VENDOR="Vendor"
+APP_URL="http://some.url.local"
+APP_DESC="Some app desc"
+APP_ARCH="amd64"
+
+fpm -s dir -t rpm -v "$APP_VERSION" -n $APP_NAME --license="$APP_LICENSE" --maintainer="$APP_MAINTAINER" --vendor "$APP_VENDOR" \
+--url="$APP_URL" --category Network --description "$APP_DESC" \
+ -a "$APP_ARCH" --before-remove prerm --after-install postinst --after-upgrade postup \
+ --before-upgrade preup -C $APP_PACKAGE_DIR .
+```
+
+And, of course, difference is in rpm specific config values, like `--rpm-init`. From other hand, if your application is complex enought, you might want to use some tools like OpsCode omnibus instead to produce complex artifacts.
+

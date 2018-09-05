@@ -4,3 +4,6 @@ build-dummy-deb:
 
 build-fpm-deb:
 	cd fpm-deb && ./build.sh
+
+build-fpm-rpm:
+	cd fpm-rpm && ./build.sh
